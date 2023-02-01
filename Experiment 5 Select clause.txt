@@ -1,0 +1,79 @@
+mysql> use sse;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_sse |
++---------------+
+| empdept       |
+| employee      |
+| mentees       |
+| student       |
+| studepartment |
++---------------+
+5 rows in set (0.00 sec)
+
+mysql> select* from mentees;
++-----------+--------+------+---------+------------+
+| Regno     | Name   | Dept | Address | Fathername |
++-----------+--------+------+---------+------------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |
++-----------+--------+------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select* from mentees where Dept="CSE";
++-----------+--------+------+---------+------------+
+| Regno     | Name   | Dept | Address | Fathername |
++-----------+--------+------+---------+------------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |
++-----------+--------+------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select* from mentees where Name="Niree";
++-----------+-------+------+---------+------------+
+| Regno     | Name  | Dept | Address | Fathername |
++-----------+-------+------+---------+------------+
+| 192211269 | Niree | CSE  | Kadapa  | Anand      |
++-----------+-------+------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> alter table mentees add Marks int(3);
+Query OK, 3 rows affected (0.06 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> update mentees set Marks=98 where Dept="CSE";
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> update mentees set Marks=95 where Name="Manasa";
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update mentees set Marks=94 where Name="Niree";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mentees;
++-----------+--------+------+---------+------------+-------+
+| Regno     | Name   | Dept | Address | Fathername | Marks |
++-----------+--------+------+---------+------------+-------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |    94 |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 |
++-----------+--------+------+---------+------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select *from mentees where Address like 'K__a_a';
++-----------+--------+------+---------+------------+-------+
+| Regno     | Name   | Dept | Address | Fathername | Marks |
++-----------+--------+------+---------+------------+-------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |    94 |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 |
++-----------+--------+------+---------+------------+-------+
+3 rows in set (0.00 sec)
+
+
