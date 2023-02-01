@@ -1,0 +1,116 @@
+mysql> use sse;
+Database changed
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(10) | YES  |     | NULL    |       |
+| age    | int(11)     | YES  |     | NULL    |       |
+| salary | int(11)     | YES  |     | NULL    |       |
+| DA     | int(11)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_sse |
++---------------+
+| employee      |
++---------------+
+1 row in set (0.00 sec)
+
+
+mysql> create table student(name varchar(10) , rollno int ,Gender int, DOB int , Mobileno int , district int , city int , Dept int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> use sse;
+Database changed
+
+mysql> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(10) | YES  |     | NULL    |       |
+| rollno   | int(11)     | YES  |     | NULL    |       |
+| Gender   | int(11)     | YES  |     | NULL    |       |
+| DOB      | int(11)     | YES  |     | NULL    |       |
+| Mobileno | int(11)     | YES  |     | NULL    |       |
+| district | int(11)     | YES  |     | NULL    |       |
+| city     | int(11)     | YES  |     | NULL    |       |
+| Dept     | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+8 rows in set (0.01 sec) , Deptname varchar(20) , Rollno int(5))' at line 1
+mysql> create table studepartment(deptid int(20) , deptname varchar(20) , Rollno int(5));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc studepartment;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deptid   | int(20)     | YES  |     | NULL    |       |
+| deptname | varchar(20) | YES  |     | NULL    |       |
+| Rollno   | int(5)      | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(10) | YES  |     | NULL    |       |
+| age    | int(11)     | YES  |     | NULL    |       |
+| salary | int(11)     | YES  |     | NULL    |       |
+| DA     | int(11)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> create table empdept(Empid int , Empdeptname varchar(15) , Empdeptid int);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc empdept;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Empid       | int(11)     | YES  |     | NULL    |       |
+| Empdeptname | varchar(15) | YES  |     | NULL    |       |
+| Empdeptid   | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into employee values("Gowthami" , 18 , 500000 ,20000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee values("Poojitha" , 18 , 400000 , 20000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee values("Sri Raksha" , 18 , 300000 , 20000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values("Jaswitha" , 18 , 60000 , 40000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from employee;
++------------+------+--------+-------+
+| name       | age  | salary | DA    |
++------------+------+--------+-------+
+| Gowthami   |   18 | 500000 | 20000 |
+| Poojitha   |   18 | 400000 | 20000 |
+| Sri Raksha |   18 | 300000 | 20000 |
+| Jaswitha   |   18 |  60000 | 40000 |
++------------+------+--------+-------+
+4 rows in set (0.00 sec)
+
+
+mysql> show tables;
++---------------+
+| Tables_in_sse |
++---------------+
+| empdept       |
+| employee      |
+| student       |
+| studepartment |
++---------------+
+4 rows in set (0.00 sec)
+
+mysql>
