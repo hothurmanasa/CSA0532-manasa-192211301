@@ -1,0 +1,83 @@
+mysql> use sse;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_sse |
++---------------+
+| empdept       |
+| employee      |
+| mentees       |
+| student       |
+| studepartment |
++---------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table mentees add subject varchar(20);
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> update mentees set subject="DBMS" where Dept="CSE";
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select*from mentees;
++-----------+--------+------+---------+------------+-------+---------+
+| Regno     | Name   | Dept | Address | Fathername | Marks | subject |
++-----------+--------+------+---------+------------+-------+---------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 | DBMS    |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |    94 | DBMS    |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 | DBMS    |
++-----------+--------+------+---------+------------+-------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select*from mentees where Marks BETWEEN 93 and 96;
++-----------+--------+------+---------+------------+-------+---------+
+| Regno     | Name   | Dept | Address | Fathername | Marks | subject |
++-----------+--------+------+---------+------------+-------+---------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 | DBMS    |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |    94 | DBMS    |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 | DBMS    |
++-----------+--------+------+---------+------------+-------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select*from mentees where Marks NOT BETWEEN 98 and 99;
++-----------+--------+------+---------+------------+-------+---------+
+| Regno     | Name   | Dept | Address | Fathername | Marks | subject |
++-----------+--------+------+---------+------------+-------+---------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 | DBMS    |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |    94 | DBMS    |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 | DBMS    |
++-----------+--------+------+---------+------------+-------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select sum(Marks) from mentees where Dept="CSE";
++------------+
+| sum(Marks) |
++------------+
+|        284 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> select avg(Marks) as Average from mentees;
++---------+
+| Average |
++---------+
+| 94.6667 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select min(Marks) as minimum from mentees;
++---------+
+| minimum |
++---------+
+|      94 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select max(Marks) as maximum from mentees;
++---------+
+| maximum |
++---------+
+|      95 |
++---------+
+1 row in set (0.00 sec)
