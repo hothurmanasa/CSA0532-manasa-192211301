@@ -1,0 +1,55 @@
+mysql> use sse;
+Database changed
+mysql> select*from mentees;
++-----------+--------+------+-----------+------------+
+| Regno     | Name   | Dept | Address   | Fathername |
++-----------+--------+------+-----------+------------+
+| 192211301 | Manasa | CSE  | Anantapur | Sudhakar   |
+| 192211293 | Bhanu  | ECE  | Nellore   | Ramu       |
+| 192211269 | Niree  | CSE  | Chittoor  | Anand      |
+| 192211301 | Manasa | CSE  | Anantapur | Sudhakar   |
++-----------+--------+------+-----------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update mentees set Dept="BME" where Regno=192211293;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mentees;
++-----------+--------+------+-----------+------------+
+| Regno     | Name   | Dept | Address   | Fathername |
++-----------+--------+------+-----------+------------+
+| 192211301 | Manasa | CSE  | Anantapur | Sudhakar   |
+| 192211293 | Bhanu  | BME  | Nellore   | Ramu       |
+| 192211269 | Niree  | CSE  | Chittoor  | Anand      |
+| 192211301 | Manasa | CSE  | Anantapur | Sudhakar   |
++-----------+--------+------+-----------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update mentees set Address="Kadapa"where Dept="CSE";
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select*from mentees;
++-----------+--------+------+---------+------------+
+| Regno     | Name   | Dept | Address | Fathername |
++-----------+--------+------+---------+------------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |
+| 192211293 | Bhanu  | BME  | Nellore | Ramu       |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |
++-----------+--------+------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> delete from mentees where Fathername="Ramu";
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from mentees;
++-----------+--------+------+---------+------------+
+| Regno     | Name   | Dept | Address | Fathername |
++-----------+--------+------+---------+------------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |
++-----------+--------+------+---------+------------+
+3 rows in set (0.00 sec)
