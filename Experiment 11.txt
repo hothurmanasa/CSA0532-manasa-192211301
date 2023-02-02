@@ -1,0 +1,106 @@
+mysql> use sse;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_sse |
++---------------+
+| empdept       |
+| employee      |
+| marks_view    |
+| mdept         |
+| mentees       |
+| mentees1      |
+| per           |
+| student       |
+| studepartment |
++---------------+
+9 rows in set (0.00 sec)
+
+mysql> select*from mentees;
++-----------+--------+------+---------+------------+-------+---------+
+| Regno     | Name   | Dept | Address | Fathername | Marks | subject |
++-----------+--------+------+---------+------------+-------+---------+
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 | DBMS    |
+| 192211269 | Niree  | CSE  | Kadapa  | Anand      |    94 | DBMS    |
+| 192211301 | Manasa | CSE  | Kadapa  | Sudhakar   |    95 | DBMS    |
++-----------+--------+------+---------+------------+-------+---------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT Name, Marks,CASE WHEN Marks > 94 THEN 'EXCELLENT' WHEN Marks >92 THEN 'GOOD' ELSE 'average' END AS performance FROM mentees;
++--------+-------+-------------+
+| Name   | Marks | performance |
++--------+-------+-------------+
+| Manasa |    95 | EXCELLENT   |
+| Niree  |    94 | GOOD        |
+| Manasa |    95 | EXCELLENT   |
++--------+-------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select Name,Marks,if(Marks>=94,"Excellent marks","Good marks") from mentees;
++--------+-------+----------------------------------------------+
+| Name   | Marks | if(Marks>=94,"Excellent marks","Good marks") |
++--------+-------+----------------------------------------------+
+| Manasa |    95 | Excellent marks                              |
+| Niree  |    94 | Excellent marks                              |
+| Manasa |    95 | Excellent marks                              |
++--------+-------+----------------------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> DELIMITER $$
+mysql> CREATE FUNCTION REPEAT_DEMO(INC INT)
+    -> RETURNS CHAR(40)
+    -> DETERMINISTIC
+    -> BEGIN
+    -> DECLARE INCOME INT;
+    -> SET INCOME=0;
+    -> REPEAT
+    -> SET INCOME=INCOME+INC;
+    -> UNTIL INCOME>4000
+    -> END REPEAT;
+    -> RETURN "INCOME>4000 DETECTED";
+    -> END;
+    -> $$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SELECT REPEAT_DEMO(3000);$$
++----------------------+
+| REPEAT_DEMO(3000)    |
++----------------------+
+| INCOME>4000 DETECTED |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT REPEAT_DEMO(4000);$$
++----------------------+
+| REPEAT_DEMO(4000)    |
++----------------------+
+| INCOME>4000 DETECTED |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> DELIMITER $$
+mysql> CREATE FUNCTION WHILE_DEMO(VALUE CHAR(1))
+    -> RETURNS CHAR(20)
+    -> DETERMINISTIC
+    -> BEGIN
+    -> DECLARE STR CHAR(100);
+    -> DECLARE I INT;
+    -> SET STR='';
+    -> SET I=1;
+    -> LABEL:
+    -> WHILE I<=5 DO
+    -> SET STR =CONCAT(STR,VALUE);
+    -> SET I=I+1;
+    -> END WHILE LABEL;
+    -> RETURN STR;
+    -> END;
+    -> $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT WHILE_DEMO('A');$$
++-----------------+
+| WHILE_DEMO('A') |
++-----------------+
+| AAAAA           |
++-----------------+
+1 row in set (0.00 sec)
